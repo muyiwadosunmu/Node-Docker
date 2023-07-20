@@ -1,0 +1,17 @@
+version: "3"
+services:
+  nginx:
+    ports:
+      - "80:80"
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: production
+    environment:
+      - NODE_ENV=production
+      - NODE_ENV=development
+      - MONGO_USER=muyiwadev
+      - MONGO_PASSWORD=mypassword
+      - SESSION_SECRET=secret
+    command: node index.js
